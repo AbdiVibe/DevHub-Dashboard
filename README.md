@@ -30,15 +30,31 @@
 
 ---
 
-## 📸 **Screenshots**
+## 📸 Screenshots
 
-<div align="center">
-  
-| Light Mode | Dark Mode |
-|------------|-----------|
-| ![Light Mode](https://via.placeholder.com/600x350/2563eb/ffffff?text=DevHub+Light+Mode) | ![Dark Mode](https://via.placeholder.com/600x350/1a1a2e/ffffff?text=DevHub+Dark+Mode) |
+### 🌞 Light Mode
 
-</div>
+<p align="center">
+  <img src="assets/images/screenshot-light.png" width="900">
+</p>
+
+### 🌙 Dark Mode
+
+<p align="center">
+  <img src="assets/images/screenshot-dark.png" width="900">
+</p>
+
+### 📱 Mobile View
+
+<p align="center">
+  <img src="assets/images/screenshot-mobile.png" width="350">
+</p>
+
+### 🛠️ Developer Tools
+
+<p align="center">
+  <img src="assets/images/screenshot-features.png" width="900">
+</p>
 
 ---
 
