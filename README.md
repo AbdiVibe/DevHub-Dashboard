@@ -1,157 +1,128 @@
-🚀 DevHub Dashboard
+<div align="center">
+  
+# 🚀 DevHub Dashboard
 
-<p align="center">
-  <img src="https://img.shields.io/badge/DevHub-Dashboard-blue?style=for-the-badge&logo=github" alt="DevHub Dashboard">
-  <img src="https://img.shields.io/badge/version-1.0.0-green?style=flat-square" alt="Version">
-  <img src="https://img.shields.io/badge/license-MIT-orange?style=flat-square" alt="License">
-  <img src="https://img.shields.io/badge/Made%20with-❤️-red?style=flat-square" alt="Made with Love">
-</p><p align="center">
-  <strong>Your All-in-One Developer Productivity Dashboard</strong>
-</p><p align="center">
-A modern, lightweight developer dashboard built with <strong>Vanilla JavaScript</strong>. Manage tasks, generate passwords, format JSON, preview Markdown, track coding progress, and access developer utilities—all from a single, responsive interface with no backend required.
-</p>---
+### *Your All-in-One Developer Productivity Suite*
 
-🌐 Live Demo
+[![GitHub stars](https://img.shields.io/github/stars/AbdiVibe/DevHub-Dashboard?style=for-the-badge&logo=github&color=blue)](https://github.com/AbdiVibe/DevHub-Dashboard/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/AbdiVibe/DevHub-Dashboard?style=for-the-badge&logo=github&color=green)](https://github.com/AbdiVibe/DevHub-Dashboard/network)
+[![GitHub issues](https://img.shields.io/github/issues/AbdiVibe/DevHub-Dashboard?style=for-the-badge&logo=github&color=orange)](https://github.com/AbdiVibe/DevHub-Dashboard/issues)
+[![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge&logo=opensourceinitiative)](LICENSE)
+[![Made with ❤️](https://img.shields.io/badge/Made%20with-❤️-red?style=for-the-badge)](https://github.com/AbdiVibe)
 
-🔗 Try it here:
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow?style=flat-square&logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![PWA](https://img.shields.io/badge/PWA-Ready-5A0FC8?style=flat-square&logo=pwa)](https://web.dev/progressive-web-apps/)
+[![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-222222?style=flat-square&logo=github)](https://pages.github.com/)
+
+</div>
+
+---
+
+## 🌐 **Live Demo**
+
+<div align="center">
+  
+### [👉 Click Here to Try DevHub Dashboard 👈](https://AbdiVibe.github.io/DevHub-Dashboard)
+
+</div>
+
+---
+
+## 📸 **Screenshots**
+
+<div align="center">
+  
+| Light Mode | Dark Mode |
+|------------|-----------|
+| ![Light Mode](https://via.placeholder.com/600x350/2563eb/ffffff?text=DevHub+Light+Mode) | ![Dark Mode](https://via.placeholder.com/600x350/1a1a2e/ffffff?text=DevHub+Dark+Mode) |
+
+</div>
+
+---
+
+## ✨ **Features**
+
+### 🛠️ **Developer Tools**
+
+<table>
+  <tr>
+    <td align="center"><b>🔑 Password Generator</b></td>
+    <td>Generate secure, random passwords instantly with customizable length</td>
+  </tr>
+  <tr>
+    <td align="center"><b>📊 JSON Formatter</b></td>
+    <td>Format and validate JSON data with proper indentation and syntax highlighting</td>
+  </tr>
+  <tr>
+    <td align="center"><b>📝 Character Counter</b></td>
+    <td>Count characters, words, and lines in real-time as you type</td>
+  </tr>
+  <tr>
+    <td align="center"><b>✏️ Markdown Preview</b></td>
+    <td>Write markdown and see the rendered preview instantly</td>
+  </tr>
+</table>
+
+### 📊 **Core Features**
+
+<table>
+  <tr>
+    <td align="center"><b>✅ Task Manager</b></td>
+    <td>Add, complete, and organize tasks by category (Coding, Learning, Personal)</td>
+  </tr>
+  <tr>
+    <td align="center"><b>📓 Notes System</b></td>
+    <td>Create, search, and manage your notes with real-time filtering</td>
+  </tr>
+  <tr>
+    <td align="center"><b>📈 Learning Progress</b></td>
+    <td>Track your skill development with interactive progress bars</td>
+  </tr>
+  <tr>
+    <td align="center"><b>🔥 Coding Streak</b></td>
+    <td>Visual calendar to track your coding consistency and daily progress</td>
+  </tr>
+</table>
+
+### 🌐 **Integrations**
+
+<table>
+  <tr>
+    <td align="center"><b>🌤️ Weather Widget</b></td>
+    <td>Current weather and 5-day forecast for any city (OpenWeatherMap API)</td>
+  </tr>
+  <tr>
+    <td align="center"><b>🐙 GitHub Analyzer</b></td>
+    <td>View profile stats, repos, stars, contributions, and achievements (GitHub API)</td>
+  </tr>
+  <tr>
+    <td align="center"><b>🌓 Dark/Light Theme</b></td>
+    <td>Toggle between themes for comfortable viewing day or night</td>
+  </tr>
+  <tr>
+    <td align="center"><b>📱 PWA Ready</b></td>
+    <td>Install as a Progressive Web App on any device (mobile, tablet, desktop)</td>
+  </tr>
+</table>
+
+### 💾 **Data Persistence**
+
+- ✅ All data saved locally in your browser using `localStorage`
+- ✅ No account or sign-up required
+- ✅ Works offline (PWA ready)
+- ✅ Data persists across browser sessions
+- ✅ Privacy-focused - your data never leaves your device
+
+---
+
+## 🚀 **Quick Start**
+
+<details>
+<summary><b>📋 Click to expand</b></summary>
+
+### Option 1: 🌐 **Use Live Version**
+```bash
+# Simply visit in your browser:
 https://AbdiVibe.github.io/DevHub-Dashboard
-
----
-
-✨ Features
-
-🛠️ Developer Utilities
-
-Feature| Description
-🔐 Password Generator| Generate strong, secure passwords with customizable options.
-📝 Markdown Preview| Write and preview Markdown in real time.
-📄 JSON Formatter| Beautify, validate, and format JSON instantly.
-🔢 Character Counter| Count characters, words, and text length live.
-
-📋 Productivity
-
-- ✅ Task Manager with categories
-- 🗒️ Notes system with search
-- 📈 Learning progress tracker
-- 🔥 Coding streak calendar
-- 🌙 Dark & Light theme support
-
-🌍 Integrations
-
-- ☀️ Live weather widget with 5-day forecast
-- 🐙 GitHub profile analyzer
-- 📊 Repository statistics
-- 📁 Contribution insights
-
-💾 Local-First Experience
-
-- 💾 Data stored securely in your browser
-- 🚫 No account required
-- ⚡ Instant loading
-- 📱 Responsive design
-- 📦 PWA-ready
-- 🌐 Offline support
-
----
-
-🚀 Quick Start
-
-Option 1 — Use Online
-
-Visit:
-
-https://AbdiVibe.github.io/DevHub-Dashboard
-
-Option 2 — Run Locally
-
-# Clone the repository
-git clone https://github.com/AbdiVibe/DevHub-Dashboard.git
-
-# Navigate into the project
-cd DevHub-Dashboard
-
-# Open the application
-open index.html
-# Windows:
-start index.html
-# Linux:
-xdg-open index.html
-
----
-
-🛠️ Built With
-
-- HTML5
-- CSS3
-- Vanilla JavaScript (ES6+)
-- Local Storage API
-- GitHub API
-- Weather API
-- Progressive Web App (PWA) technologies
-
----
-
-📁 Project Structure
-
-DevHub-Dashboard/
-├── index.html
-├── style.css
-├── script.js
-├── assets/
-│   ├── images/
-│   └── icons/
-├── manifest.json
-└── README.md
-
----
-
-🎯 Why DevHub Dashboard?
-
-Instead of juggling multiple websites and browser tabs, DevHub Dashboard centralizes the tools developers use every day into a single clean, responsive workspace.
-
-Whether you're coding, learning, or planning your next project, everything you need is just one click away.
-
----
-
-📸 Screenshots
-
-«Add screenshots or GIFs here to showcase the dashboard.»
-
-![Dashboard Screenshot](assets/images/dashboard.png)
-
----
-
-🤝 Contributing
-
-Contributions are welcome!
-
-1. Fork the repository
-2. Create a feature branch
-
-git checkout -b feature/amazing-feature
-
-3. Commit your changes
-
-git commit -m "Add amazing feature"
-
-4. Push to your branch
-
-git push origin feature/amazing-feature
-
-5. Open a Pull Request
-
----
-
-📄 License
-
-This project is licensed under the MIT License.
-
-Feel free to use, modify, and share it.
-
----
-
-⭐ Support
-
-If you found this project useful, consider giving it a ⭐ on GitHub.
-
-Your support helps the project grow and motivates future improvements.
