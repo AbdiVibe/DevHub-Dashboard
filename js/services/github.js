@@ -1,85 +1,130 @@
+// GitHub Service - Real GitHub API
 export class GitHubService {
   constructor() {
     this.baseUrl = 'https://api.github.com';
-    // Optional: Add your token for higher rate limits
-    this.headers = {
-      'Accept': 'application/vnd.github.v3+json'
-    };
-    // Uncomment if you have a token:
-    // this.headers['Authorization'] = 'token YOUR_GITHUB_TOKEN';
+    this.cache = {};
   }
 
   async analyzeUser(username) {
     const resultEl = document.getElementById('github-result');
-    resultEl.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Analyzing profile...';
+
+    // Check cache (5 minute cache)
+    const cacheKey = username.toLowerCase();
+    if (
+      this.cache[cacheKey] &&
+      Date.now() - this.cache[cacheKey].timestamp < 300000
+    ) {
+      this.displayProfile(this.cache[cacheKey].data, resultEl);
+      return;
+    }
+
+    resultEl.innerHTML =
+      '<i class="fas fa-spinner fa-pulse"></i> Analyzing GitHub profile...';
 
     try {
-      const [userData, reposData, eventsData] = await Promise.all([
-        this.fetchUser(username),
-        this.fetchRepos(username),
-        this.fetchEvents(username)
-      ]);
+      // Fetch user data
+      const userResponse = await fetch(
+        `${this.baseUrl}/users/${encodeURIComponent(username)}`
+      );
 
-      this.displayProfile(userData, reposData, eventsData, resultEl);
+      if (!userResponse.ok) {
+        if (userResponse.status === 404) {
+          throw new Error(`User "${username}" not found on GitHub.`);
+        } else if (userResponse.status === 403) {
+          throw new Error(
+            "GitHub API rate limit exceeded. Please try again in about an hour."
+          );
+        } else {
+          throw new Error(`GitHub API error: ${userResponse.status}`);
+        }
+      }
+
+      const userData = await userResponse.json();
+
+      // Fetch repositories
+      const reposResponse = await fetch(
+        `${this.baseUrl}/users/${encodeURIComponent(
+          username
+        )}/repos?per_page=100&sort=updated`
+      );
+
+      const reposData = reposResponse.ok
+        ? await reposResponse.json()
+        : [];
+
+      // Fetch recent events
+      const eventsResponse = await fetch(
+        `${this.baseUrl}/users/${encodeURIComponent(
+          username
+        )}/events?per_page=30`
+      );
+
+      const eventsData = eventsResponse.ok
+        ? await eventsResponse.json()
+        : [];
+
+      const profileData = {
+        user: userData,
+        repos: reposData,
+        events: eventsData,
+      };
+
+      // Cache data
+      this.cache[cacheKey] = {
+        data: profileData,
+        timestamp: Date.now(),
+      };
+
+      this.displayProfile(profileData, resultEl);
     } catch (error) {
       resultEl.innerHTML = `
-        <div style="color: #ef4444; padding: 0.5rem;">
-          <i class="fas fa-exclamation-circle"></i> 
-          Error: ${error.message}
+        <div style="color:#ef4444;padding:.5rem;">
+          <i class="fas fa-exclamation-circle"></i>
+          <strong>Error:</strong> ${error.message}
         </div>
       `;
+      console.error("GitHub error:", error);
     }
   }
 
-  async fetchUser(username) {
-    const response = await fetch(`${this.baseUrl}/users/${username}`, {
-      headers: this.headers
-    });
-    if (!response.ok) {
-      if (response.status === 404) throw new Error('User not found');
-      if (response.status === 403) throw new Error('Rate limit exceeded. Try again later.');
-      throw new Error('Failed to fetch user data');
-    }
-    return response.json();
-  }
+  displayProfile(data, element) {
+    const { user, repos, events } = data;
 
-  async fetchRepos(username) {
-    const response = await fetch(
-      `${this.baseUrl}/users/${username}/repos?per_page=100&sort=updated`,
-      { headers: this.headers }
+    const totalStars = repos.reduce(
+      (sum, repo) => sum + repo.stargazers_count,
+      0
     );
-    return response.json();
-  }
 
-  async fetchEvents(username) {
-    const response = await fetch(
-      `${this.baseUrl}/users/${username}/events?per_page=30`,
-      { headers: this.headers }
+    const totalForks = repos.reduce(
+      (sum, repo) => sum + repo.forks_count,
+      0
     );
-    return response.json();
-  }
 
-  displayProfile(user, repos, events, element) {
-    const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
-    const totalForks = repos.reduce((sum, repo) => sum + repo.forks_count, 0);
     const languages = this.getTopLanguages(repos);
     const contributions = this.countContributions(events);
-    const achievements = this.getAchievements(repos, user);
+    const achievements = this.getAchievements(repos);
 
     element.innerHTML = `
-      <div style="display:flex;flex-direction:column;gap:0.8rem;">
+      <div style="display:flex;flex-direction:column;gap:.8rem;">
         <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
-          <img src="${user.avatar_url}" alt="${user.login}" 
-               style="width:60px;height:60px;border-radius:50%;border:3px solid #2563eb;">
+          <img
+            src="${user.avatar_url}"
+            alt="${user.login}"
+            style="width:60px;height:60px;border-radius:50%;border:3px solid #2563eb;"
+          >
+
           <div>
-            <strong style="font-size:1.2rem;">${user.name || user.login}</strong>
-            <br>
-            <span style="opacity:0.7;">@${user.login}</span>
-            ${user.bio ? `<br><span style="font-size:0.9rem;opacity:0.8;">${user.bio}</span>` : ''}
+            <strong style="font-size:1.2rem;">${user.name || user.login}</strong><br>
+            <span style="opacity:.7;">@${user.login}</span>
+            ${
+              user.bio
+                ? `<br><span style="font-size:.9rem;opacity:.8;">${user.bio}</span>`
+                : ""
+            }
           </div>
         </div>
-        
-        <div style="display:flex;gap:1rem;flex-wrap:wrap;font-size:0.9rem;">
+
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;font-size:.9rem;">
           <span>📁 ${user.public_repos} repos</span>
           <span>⭐ ${totalStars} stars</span>
           <span>🍴 ${totalForks} forks</span>
@@ -87,18 +132,39 @@ export class GitHubService {
           <span>👤 ${user.following} following</span>
           <span>🏆 ${achievements}</span>
         </div>
-        
-        <div style="display:flex;flex-wrap:wrap;gap:0.3rem;">
-          ${languages.slice(0, 8).map(lang => `
-            <span style="background:#e2e8f0;padding:0.2rem 0.6rem;border-radius:12px;font-size:0.7rem;font-weight:500;">
+
+        ${
+          languages.length
+            ? `
+        <div style="display:flex;flex-wrap:wrap;gap:.3rem;">
+          ${languages
+            .slice(0, 8)
+            .map(
+              (lang) => `
+            <span style="background:rgba(37,99,235,.12);padding:.2rem .8rem;border-radius:12px;font-size:.7rem;font-weight:500;">
               ${lang}
             </span>
-          `).join('')}
-        </div>
-        
-        <div style="font-size:0.8rem;opacity:0.7;border-top:1px solid #e2e8f0;padding-top:0.5rem;">
-          <span>📅 Joined ${new Date(user.created_at).toLocaleDateString()}</span>
-          <span style="margin-left:0.5rem;">🔄 ${contributions} recent contributions</span>
+          `
+            )
+            .join("")}
+        </div>`
+            : ""
+        }
+
+        <div style="font-size:.8rem;opacity:.7;border-top:1px solid #e2e8f0;padding-top:.5rem;">
+          <span>📅 Joined ${new Date(user.created_at).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}</span>
+
+          <span style="margin-left:.5rem;">🔄 ${contributions} recent contributions</span>
+
+          ${
+            user.location
+              ? `<span style="margin-left:.5rem;">📍 ${user.location}</span>`
+              : ""
+          }
         </div>
       </div>
     `;
@@ -106,30 +172,36 @@ export class GitHubService {
 
   getTopLanguages(repos) {
     const langCount = {};
-    repos.forEach(repo => {
+
+    repos.forEach((repo) => {
       if (repo.language) {
         langCount[repo.language] = (langCount[repo.language] || 0) + 1;
       }
     });
+
     return Object.entries(langCount)
       .sort((a, b) => b[1] - a[1])
       .map(([lang]) => lang);
   }
 
   countContributions(events) {
-    const pushEvents = events.filter(e => e.type === 'PushEvent');
-    return pushEvents.length;
+    return events.filter((event) => event.type === "PushEvent").length;
   }
 
-  getAchievements(repos, user) {
-    const count = repos.length;
-    const stars = repos.reduce((sum, r) => sum + r.stargazers_count, 0);
-    
-    if (count > 100) return '💎 Legend';
-    if (count > 50 && stars > 100) return '🏅 Master';
-    if (count > 30) return '⭐ Expert';
-    if (count > 15) return '🚀 Active';
-    if (count > 5) return '🌱 Growing';
-    return '🌱 Starter';
+  getAchievements(repos) {
+    const repoCount = repos.length;
+
+    const stars = repos.reduce(
+      (sum, repo) => sum + repo.stargazers_count,
+      0
+    );
+
+    if (repoCount > 100) return "💎 Legend";
+    if (repoCount > 50 && stars > 100) return "🏅 Master";
+    if (repoCount > 30) return "⭐ Expert";
+    if (repoCount > 15) return "🚀 Active";
+    if (repoCount > 5) return "🌱 Growing";
+
+    return "🌱 Starter";
   }
 }
