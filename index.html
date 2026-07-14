@@ -7,8 +7,8 @@
   <title>DevHub Dashboard</title>
 
   <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
@@ -16,7 +16,8 @@
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/responsive.css">
 
-  <link rel="manifest" href="manifest.json">
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="./manifest.json">
 </head>
 <body>
 <div class="app-layout">
@@ -43,9 +44,9 @@
     <!-- Welcome -->
     <section id="home" class="card">
       <h2><i class="fas fa-hand-peace"></i> Welcome</h2>
-      <p style="font-size:1.1rem;">Hello, <span id="username" style="font-weight:600;">Developer</span> 👋</p>
-      <time id="datetime" style="display:block;margin:0.25rem 0 0.5rem;opacity:0.7;"></time>
-      <blockquote id="quote" style="font-style:italic;border-left:4px solid #2563eb;padding-left:1rem;margin:0.5rem 0;">“Code is poetry.”</blockquote>
+      <p class="welcome-text">Hello, <span id="username" class="username">Developer</span> 👋</p>
+      <time id="datetime" class="datetime"></time>
+      <blockquote id="quote" class="quote">“Code is poetry.”</blockquote>
       <div class="stats">
         <div class="stat-card"><i class="fas fa-folder-open"></i> Projects: <span id="projects-count">0</span></div>
         <div class="stat-card"><i class="fas fa-clock"></i> Hours: <span id="coding-hours">0</span></div>
@@ -90,7 +91,7 @@
         </select>
         <button type="submit"><i class="fas fa-plus"></i> Add</button>
       </form>
-      <ul id="task-list" style="list-style:none;"></ul>
+      <ul id="task-list"></ul>
       <p><i class="fas fa-chart-pie"></i> Completion: <span id="task-progress">0%</span></p>
     </section>
 
@@ -98,7 +99,7 @@
     <section id="notes" class="card">
       <h2><i class="fas fa-sticky-note"></i> Notes</h2>
       <div class="flex-row">
-        <input type="text" id="note-search" placeholder="Search notes..." style="flex:1;">
+        <input type="text" id="note-search" placeholder="Search notes...">
         <button id="add-note"><i class="fas fa-plus"></i> New Note</button>
       </div>
       <div id="notes-container"></div>
@@ -108,7 +109,7 @@
     <section id="streak" class="card">
       <h2><i class="fas fa-fire"></i> Coding Streak</h2>
       <div id="calendar"></div>
-      <p style="margin-top:0.5rem;">Current Streak: <span id="streak-count">0</span> days</p>
+      <p>Current Streak: <span id="streak-count">0</span> days</p>
     </section>
 
     <!-- Tools -->
@@ -132,14 +133,14 @@
         <div class="tool-item">
           <strong><i class="fas fa-font"></i> Chars</strong>
           <div class="tool-content">
-            <input type="text" id="char-input" placeholder="Type here..." style="flex:1;">
+            <input type="text" id="char-input" placeholder="Type here...">
             <span class="char-count-display" id="char-count">0</span>
           </div>
         </div>
         <div class="tool-item">
           <strong><i class="fas fa-markdown"></i> Markdown</strong>
           <div class="tool-content">
-            <input type="text" id="md-input" placeholder="# Hello" value="# Hello" style="flex:1;">
+            <input type="text" id="md-input" placeholder="# Hello" value="# Hello">
             <span class="md-preview-box" id="md-preview">Hello</span>
           </div>
         </div>
@@ -153,31 +154,4 @@
         <label for="skill-name">Technology</label>
         <input type="text" id="skill-name" placeholder="React" value="React">
         <label for="skill-progress">Progress (%)</label>
-        <input type="number" id="skill-progress" placeholder="50" min="0" max="100" value="70">
-        <button type="submit"><i class="fas fa-save"></i> Add/Update</button>
-      </form>
-      <div id="skills-container"></div>
-    </section>
-
-    <!-- Settings -->
-    <section id="settings" class="card">
-      <h2><i class="fas fa-sliders-h"></i> Settings</h2>
-      <form id="settings-form">
-        <label for="change-username">Change Username</label>
-        <input type="text" id="change-username" placeholder="New username">
-        <button id="save-username" type="button"><i class="fas fa-user-edit"></i> Save</button>
-        <button id="toggle-theme" type="button"><i class="fas fa-moon"></i> Toggle Theme</button>
-        <button id="reset-data" type="button" style="background:#ef4444;"><i class="fas fa-trash-alt"></i> Reset</button>
-      </form>
-    </section>
-  </main>
-</div>
-
-<footer class="footer">
-  <p>&copy; 2026 DevHub Dashboard · Built by Abdimalik Dek Gadhaye · <i class="fas fa-code"></i></p>
-</footer>
-
-<!-- JavaScript - Using ES Modules -->
-<script type="module" src="js/app.js"></script>
-</body>
-</html>
+        <input type="number" id="skill-progress" placeholder="50" min="0" max
