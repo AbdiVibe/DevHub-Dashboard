@@ -1,0 +1,30 @@
+{
+  "name": "devhub-dashboard",
+  "version": "1.0.0",
+  "description": "All-in-One Developer Productivity Suite",
+  "main": "index.html",
+  "scripts": {
+    "start": "open index.html",
+    "deploy": "echo 'Deploy to GitHub Pages'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/devhub-dashboard.git"
+  },
+  "keywords": [
+    "developer",
+    "dashboard",
+    "productivity",
+    "tools",
+    "github",
+    "weather",
+    "tasks",
+    "notes"
+  ],
+  "author": "Abdimalik Dek Gadhaye",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AbdiVibe/DevHub-Dashboard/issues"
+  },
+  "homepage": "https://github.com/AbdiVibe/DevHub-Dashboard#readme"
+}
