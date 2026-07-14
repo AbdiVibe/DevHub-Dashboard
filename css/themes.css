@@ -1,0 +1,54 @@
+/* Theme Color Schemes */
+:root {
+  --primary: #2563eb;
+  --primary-light: #60a5fa;
+  --primary-dark: #1d4ed8;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+}
+
+/* Theme Variations */
+.theme-purple {
+  --primary: #7c3aed;
+  --primary-light: #a78bfa;
+  --primary-dark: #6d28d9;
+}
+
+.theme-green {
+  --primary: #10b981;
+  --primary-light: #34d399;
+  --primary-dark: #059669;
+}
+
+.theme-pink {
+  --primary: #ec4899;
+  --primary-light: #f472b6;
+  --primary-dark: #db2777;
+}
+
+/* Apply theme colors */
+button {
+  background: var(--primary) !important;
+}
+
+button:hover {
+  background: var(--primary-dark) !important;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline-color: var(--primary) !important;
+}
+
+.task-item, .note-item, .skill-item {
+  border-left-color: var(--primary) !important;
+}
+
+.day.active {
+  background: var(--primary) !important;
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}

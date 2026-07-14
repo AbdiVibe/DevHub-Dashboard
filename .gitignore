@@ -1,0 +1,198 @@
+# ================================
+# macOS / Linux System Files
+# ================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+thumbs.db
+*.swp
+*.swo
+*~
+*.tmp
+*.temp
+
+# ================================
+# Windows System Files
+# ================================
+desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+
+# ================================
+# IDE & Editor Files
+# ================================
+.vscode/
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+*.sublime-*
+.vim/
+.vimrc
+.nvim/
+nvim/
+.workspace
+
+# ================================
+# Node.js / npm / yarn
+# ================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.npm/
+.yarn/
+.yarn-integrity
+
+# ================================
+# Environment & Secrets
+# ================================
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+.env.test
+*.env
+*.secret
+*.key
+*.pem
+*.crt
+*.cert
+
+# ================================
+# Build & Distribution
+# ================================
+dist/
+build/
+out/
+release/
+*.min.js
+*.min.css
+*.bundle.js
+*.chunk.js
+*.map
+*.js.map
+*.css.map
+
+# ================================
+# Logs & Temp Files
+# ================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.pid
+*.seed
+*.pid.lock
+
+# ================================
+# Git & Version Control
+# ================================
+*.orig
+*.rej
+*.patch
+*.diff
+*.merge
+*.merg
+*.conflict
+.gitattributes
+.gitmodules
+.gitignore.local
+
+# ================================
+# Testing & Coverage
+# ================================
+coverage/
+.nyc_output/
+*.test.js
+*.spec.js
+test-results/
+jest.config.js
+*.test.js.map
+*.spec.js.map
+
+# ================================
+# Assets & Media (Optional)
+# ================================
+# Uncomment if you have large assets
+# assets/images/*.jpg
+# assets/images/*.png
+# assets/videos/*
+# *.psd
+# *.ai
+# *.sketch
+# *.xd
+
+# ================================
+# User Data / LocalStorage Backups
+# ================================
+*.bak
+*.backup
+*.old
+*.orig
+*.save
+*.sav
+*-backup
+
+# ================================
+# Miscellaneous
+# ================================
+*.swp
+*.swo
+*~
+.vagrant/
+.terraform/
+*.tfstate
+*.tfstate.*
+*.pkg
+*.dmg
+*.exe
+*.msi
+*.deb
+*.rpm
+*.apk
+*.jar
+*.war
+*.ear
+*.class
+*.pyc
+*.pyo
+__pycache__/
+*.so
+*.dylib
+*.dll
+*.cache
+*.lock
+.htaccess
+.htpasswd
+web.config
+
+# ================================
+# Project Specific
+# ================================
+# DevHub Dashboard specific
+# If you want to keep a sample data file, uncomment:
+# sample-data.json
+# user-data.json
+
+# Keep the assets folder structure but ignore content
+# assets/*
+# !assets/.gitkeep
+# !assets/icons/.gitkeep
