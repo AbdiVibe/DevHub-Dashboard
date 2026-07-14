@@ -1,26 +1,36 @@
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    
-    - name: Setup Pages
-      uses: actions/configure-pages@v3
-    
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v1
-      with:
-        path: '.'
-    
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v1
+{
+  "name": "devhub-dashboard",
+  "version": "1.0.0",
+  "description": "All-in-One Developer Productivity Suite by Abdimalik Dek Gadhaye",
+  "main": "index.html",
+  "scripts": {
+    "start": "open index.html",
+    "deploy": "echo 'Deploy to GitHub Pages'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbdiVibe/DevHub-Dashboard.git"
+  },
+  "keywords": [
+    "developer",
+    "dashboard",
+    "productivity",
+    "tools",
+    "github",
+    "weather",
+    "tasks",
+    "notes",
+    "password-generator",
+    "json-formatter",
+    "markdown-preview"
+  ],
+  "author": "Abdimalik Dek Gadhaye",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AbdiVibe/DevHub-Dashboard/issues"
+  },
+  "homepage": "https://github.com/AbdiVibe/DevHub-Dashboard#readme",
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
